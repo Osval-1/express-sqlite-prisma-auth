@@ -1,7 +1,7 @@
 import bcrypt  from 'bcrypt';
-import { User } from "../../models/user.model";
-import mongoose from "mongoose"
-import {Response,Request,RequestHandler} from "express"
+import {Response,Request} from "express"
+import { prisma } from '../../../server';
+
 
 export const signup = async (req:Request, res:Response) => {
     try {
@@ -14,22 +14,18 @@ export const signup = async (req:Request, res:Response) => {
         res.status(400).json({message:" please provide all information"});
         return 
       }
-      const existingUser = await User.findOne({ email });
+      const existingUser = await prisma.user.findUnique({
+        where:{email:email }});
       if (existingUser) {
         res.status(400).json({message:" email already exists"});
         return 
       }
       const hashedPassword = await bcrypt.hash(password, 10);
-      const newUser = new User({
-        name: name,
-        email: email,
-        password: hashedPassword,
-      });
-      await newUser.save();
-      res.status(201).json({message:`User registered successfully,${newUser}`});
+      const newUser  = await prisma.user.create({ data: { name, email,password:hashedPassword } })
+      res.status(201).json({message:`User registered successfully`});
     } catch (error) {
       console.log(error);
-      res.status(400).json({message:"error logging in"});;
+      res.status(400).json({message:"Failed to Signup,Please try again later"});;
     }
   };
   

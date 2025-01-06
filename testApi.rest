@@ -1,0 +1,27 @@
+GET http://localhost:8000/auth/getUsers
+###
+POST  http://localhost:8000/auth/signup
+Content-Type: application/json
+
+{
+    "name":"Ezra Konate",
+    "email":"Ezra@gmail.com",
+    "password":"12345678"
+}
+###
+POST  http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "email":"Ezra@gmail.com",
+    "password":"12345678"
+}
+###
+POST  http://localhost:8000/auth/updatePassword
+Content-Type: application/json
+
+{
+    "email":"Ezra@gmail.com",
+    "oldPassword":"12345678",
+    "newPassword":"00000000"
+}
