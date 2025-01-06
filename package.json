@@ -1,0 +1,42 @@
+{
+  "name": "authentication",
+  "version": "1.0.0",
+  "description": "authentication Test",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "nodemon server.ts"
+  },
+  "keywords": [
+    "auth",
+    "jwt",
+    "login",
+    "signup",
+    "prisma",
+    "sqlite"
+  ],
+  "author": "Nde Oswald",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^6.1.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.17.0",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.3",
+    "nodemon": "^3.1.9",
+    "sqlite3": "^5.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.19.0"
+  },
+  "devDependencies": {
+    "prisma": "^6.1.0"
+  }
+}
